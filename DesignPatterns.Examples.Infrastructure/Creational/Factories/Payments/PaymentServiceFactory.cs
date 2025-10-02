@@ -1,7 +1,7 @@
 using DesignPatterns.Examples.Core.Enums;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DesignPatterns.Examples.Infrastructure.Factories.Payments;
+namespace DesignPatterns.Examples.Infrastructure.Creational.Factories.Payments;
 
 public class PaymentServiceFactory : IPaymentServiceFactory
 {

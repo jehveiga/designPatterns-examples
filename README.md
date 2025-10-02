@@ -154,11 +154,16 @@ Os **padrões comportamentais** focam na **comunicação entre objetos** e na ma
 ## 📂 Estrutura do Projeto
 
 ```
-/DesignPatterns
-  ├── Creational
-  ├── Structural
-  ├── Behavioral
+/DesignPatterns.Examples
   ├── README.md
+  ├── DesignPatterns.Examples.Api
+  ├── DesignPatterns.Examples.Application
+  ├── DesignPatterns.Examples.Core
+  ├── DesignPatterns.Examples.Infrastructure
+    ├── Creational
+    ├── Structural
+    ├── Behavioral
+
 ```
 
 Cada diretório contém os exemplos em **C#** de cada padrão.
@@ -170,7 +175,7 @@ Cada diretório contém os exemplos em **C#** de cada padrão.
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/design-patterns-csharp.git
+   git clone https://github.com/jehveiga/designPatterns-examples.git
    ```
 
 2. Abra no **Visual Studio** ou **Rider**.

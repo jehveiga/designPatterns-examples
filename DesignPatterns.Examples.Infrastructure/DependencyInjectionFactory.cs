@@ -1,4 +1,4 @@
-﻿using DesignPatterns.Examples.Infrastructure.Factories.Payments;
+﻿using DesignPatterns.Examples.Infrastructure.Creational.Factories.Payments;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DesignPatterns.Examples.Infrastructure;

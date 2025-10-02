@@ -1,5 +1,5 @@
 using DesignPatterns.Examples.Application.Models;
-using DesignPatterns.Examples.Infrastructure.Factories.Payments;
+using DesignPatterns.Examples.Infrastructure.Creational.Factories.Payments;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DesignPatterns.Examples.Controllers;

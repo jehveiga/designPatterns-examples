@@ -14,4 +14,9 @@
     <ProjectReference Include="..\DesignPatterns.Examples.Application\DesignPatterns.Examples.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Behavioral\" />
+    <Folder Include="Structural\" />
+  </ItemGroup>
+
 </Project>

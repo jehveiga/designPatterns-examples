@@ -1,6 +1,6 @@
 using DesignPatterns.Examples.Application.Models;
 
-namespace DesignPatterns.Examples.Infrastructure.Factories.Payments;
+namespace DesignPatterns.Examples.Infrastructure.Creational.Factories.Payments;
 
 public class PaymentSlipService : IPaymentService
 {
