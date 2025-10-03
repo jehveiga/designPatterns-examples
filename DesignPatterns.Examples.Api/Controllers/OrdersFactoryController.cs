@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DesignPatterns.Examples.Controllers;
 
 [ApiController]
-[Route("api/orders")]
+[Route("api/[controller]")]
 public class OrdersFactoryController : ControllerBase
 {
     private readonly IPaymentServiceFactory _paymentServiceFactory;

@@ -5,7 +5,7 @@ namespace DesignPatterns.Examples.Infrastructure;
 
 public static class DependencyInjectionFactory
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+    public static IServiceCollection AddInfrastructureFactory(this IServiceCollection services)
     {
         _ = services.AddFactories()
                     .AddServices();
