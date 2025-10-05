@@ -4,12 +4,13 @@ namespace DesignPatterns.Examples.Application.Models;
 
 public class OrderInputModel
 {
-    public required CustomerInputModel Customer { get; set; }
-    public required List<OrderItemInputModel> Items { get; set; }
-    public required DeliveryAddressInputModel DeliveryAddress { get; set; }
-    public required PaymentAddressInputModel PaymentAddress { get; set; }
-    public required PaymentInfoInputModel PaymentInfo { get; set; }
+    public CustomerInputModel Customer { get; set; }
+    public List<OrderItemInputModel> Items { get; set; }
+    public DeliveryAddressInputModel DeliveryAddress { get; set; }
+    public PaymentAddressInputModel PaymentAddress { get; set; }
+    public PaymentInfoInputModel PaymentInfo { get; set; }
     public bool? IsInternational { get; set; }
+    public decimal TotalPrice => Items.Sum(i => i.Price * i.Quantity);
 }
 
 public class CustomerInputModel : ICloneable
@@ -52,27 +53,27 @@ public class OrderItemInputModel
 
 public class DeliveryAddressInputModel
 {
-    public required string Street { get; set; }
-    public required string Number { get; set; }
-    public required string City { get; set; }
-    public required string State { get; set; }
-    public required string ZipCode { get; set; }
+    public string Street { get; set; }
+    public string Number { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    public string ZipCode { get; set; }
 }
 
 public class PaymentAddressInputModel
 {
-    public required string Street { get; set; }
-    public required string Number { get; set; }
-    public required string City { get; set; }
-    public required string State { get; set; }
-    public required string ZipCode { get; set; }
+    public string Street { get; set; }
+    public string Number { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    public string ZipCode { get; set; }
 }
 
 public class PaymentInfoInputModel
 {
     public PaymentMethod PaymentMethod { get; set; }
-    public required string CardNumber { get; set; }
-    public required string FullName { get; set; }
-    public required string ExpirationDate { get; set; }
-    public required string Cvv { get; set; }
+    public string CardNumber { get; set; }
+    public string FullName { get; set; }
+    public string ExpirationDate { get; set; }
+    public string Cvv { get; set; }
 }

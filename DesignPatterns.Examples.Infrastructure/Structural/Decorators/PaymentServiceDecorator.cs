@@ -1,24 +1,25 @@
 ﻿using DesignPatterns.Examples.Application.Models;
 using DesignPatterns.Examples.Infrastructure.Creational.Factories.Payments;
+using DesignPatterns.Examples.Infrastructure.Structural.Facades;
 
 namespace DesignPatterns.Examples.Infrastructure.Structural.Decorators;
 
-public class PaymentServiceDecorator : IPaymentService
+public class PaymentServiceDecorator(
+    IPaymentService paymentService,
+    ICoreCrmIntegrationService crmService,
+    IAntiFraudFacade antiFraudFacade) : IPaymentService
 {
-    private readonly IPaymentService _paymentService;
-    private readonly ICoreCrmIntegrationService _crmService;
-
-    public PaymentServiceDecorator(IPaymentService paymentService, ICoreCrmIntegrationService crmService)
-    {
-        _paymentService = paymentService;
-        _crmService = crmService;
-    }
-
     public object Process(OrderInputModel model)
     {
-        object result = _paymentService.Process(model);
+        AntiFraudModel antiFraudModel = new(model.Customer.Document, model.TotalPrice);
+        AntiFraudResultModel? antiFraudResult = antiFraudFacade.Check(antiFraudModel);
 
-        _crmService.Sync(model);
+        if (antiFraudResult is null || antiFraudResult.CheckResult)
+            throw new InvalidOperationException(antiFraudResult?.Comments);
+
+        object result = paymentService.Process(model);
+
+        crmService.Sync(model);
 
         return result;
     }

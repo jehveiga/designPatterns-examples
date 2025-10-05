@@ -1,25 +1,16 @@
 ﻿using DesignPatterns.Examples.Core.Enums;
 using DesignPatterns.Examples.Infrastructure.Creational.Factories.Payments;
+using DesignPatterns.Examples.Infrastructure.Structural.Facades;
 
 namespace DesignPatterns.Examples.Infrastructure.Structural.Decorators;
 
-public class PaymentServiceFactory : IPaymentServiceFactory
+public class PaymentServiceFactory(
+    CreditCardService creditCardService,
+    PaymentSlipService paymentSlipService,
+    ICoreCrmIntegrationService crmService,
+    IAntiFraudFacade antiFraudFacade
+        ) : IPaymentServiceFactory
 {
-    private readonly CreditCardService _creditCardService;
-    private readonly PaymentSlipService _paymentSlipService;
-    private readonly ICoreCrmIntegrationService _crmService;
-
-    public PaymentServiceFactory(
-        CreditCardService creditCardService,
-        PaymentSlipService paymentSlipService,
-        ICoreCrmIntegrationService crmService
-        )
-    {
-        _creditCardService = creditCardService;
-        _paymentSlipService = paymentSlipService;
-        _crmService = crmService;
-    }
-
     public IPaymentService GetService(PaymentMethod paymentMethod)
     {
         IPaymentService paymentService;
@@ -27,12 +18,12 @@ public class PaymentServiceFactory : IPaymentServiceFactory
         switch (paymentMethod)
         {
             case PaymentMethod.CreditCard:
-                paymentService = _creditCardService;
+                paymentService = creditCardService;
 
                 break;
 
             case PaymentMethod.PaymentSlip:
-                paymentService = _paymentSlipService;
+                paymentService = paymentSlipService;
 
                 break;
 
@@ -40,6 +31,6 @@ public class PaymentServiceFactory : IPaymentServiceFactory
                 throw new InvalidOperationException();
         }
 
-        return new PaymentServiceDecorator(paymentService, _crmService);
+        return new PaymentServiceDecorator(paymentService, crmService, antiFraudFacade);
     }
 }
