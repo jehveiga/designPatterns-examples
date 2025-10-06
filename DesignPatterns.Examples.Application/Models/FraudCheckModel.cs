@@ -1,9 +1,9 @@
 ﻿namespace DesignPatterns.Examples.Application.Models;
 
-public class FraudCheckModel
+public class FraudCheckModel(decimal totalAmount, Guid customerId, string customerName, string document)
 {
-    public decimal TotalAmount { get; private set; }
-    public Guid CustomerId { get; private set; }
-    public string? CustomerName { get; private set; }
-    public string? CustomerDocument { get; private set; }
+    public decimal TotalAmount { get; private set; } = totalAmount;
+    public Guid CustomerId { get; private set; } = customerId;
+    public string CustomerName { get; private set; } = customerName;
+    public string Document { get; private set; } = document;
 }
